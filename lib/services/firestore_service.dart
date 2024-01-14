@@ -5,9 +5,10 @@ class FirestoreService {
       FirebaseFirestore.instance.collection('tasks');
 
   // CREATE : add task
-  Future<void> addTask(String task) {
+  Future<void> addTask(String task, String description) {
     return tasks.add({
-      'task': task,
+      'title': task,
+      'description': description,
       'timestamp': Timestamp.now(),
     });
   }
@@ -21,9 +22,10 @@ class FirestoreService {
   }
 
   // UPDATE : update tasks given a doc id
-  Future<void> updateTask(String docID, String newTask) {
+  Future<void> updateTask(String docID, String newTask, String newDescription) {
     return tasks.doc(docID).update({
-      'task': newTask,
+      'title': newTask,
+      'description': newDescription,
       'timestamp': Timestamp.now(),
     });
   }
